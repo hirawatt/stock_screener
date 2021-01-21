@@ -1,3 +1,4 @@
+#!/usr/bin/python3.8
 import requests
 import zipfile
 from dateutil.parser import parse
@@ -10,7 +11,6 @@ def download_nsecm_bhavcopy(bcdate):
     dt = bcdate.strftime('%d')
     base_path = "https://archives.nseindia.com/content/historical/EQUITIES/{}/{}/cm{}{}{}bhav.csv.zip"
     path = base_path.format(year, mnth, dt, mnth, year)
-    print(path)
     response = requests.get(path)
     if response.status_code == 200:
         response = response.content
@@ -30,6 +30,7 @@ def download_nsecm_bhavcopy(bcdate):
             f.write(data)
     return True
 
+# Date Parser Function
 def GetParser():
     from argparse import ArgumentParser
     parser = ArgumentParser()
@@ -39,5 +40,6 @@ def GetParser():
 if __name__ == '__main__':
     args = GetParser().parse_args()
     date = datetime.strptime(args.date, '%Y%m%d')
+    print("Downloadning BhavCopy dated...", date)
     download_nsecm_bhavcopy(date)
-    print(date)
+    print("BhavCopy downloaded and saved in csv format")
