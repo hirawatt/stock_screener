@@ -42,7 +42,7 @@ def executeScriptsFromFile(filename):
             conn = psycopg2.connect(**params)
             cur = conn.cursor()
             cur.execute(command)
-            cur.commit()
+            conn.commit()
             cur = conn.close()
         except (Exception, psycopg2.OperationalError) as msg:
             print ("Command skipped: ", msg)
@@ -54,4 +54,4 @@ def executeScriptsFromFile(filename):
 
 if __name__ == '__main__':
     create_tables()
-    executeScriptsFromFile(markets_india_calculated_ratios.psql)
+    executeScriptsFromFile("markets_india_calculated_ratios.psql")
