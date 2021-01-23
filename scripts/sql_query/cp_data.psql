@@ -1,4 +1,0 @@
-COPY markets_india_nse_bhavcopy (symbol, series, open, high, low, close, last_price, previous_close, traded_volume, traded_value, trade_date, no_of_trades, isin)
-FROM '/home/vh/Desktop/finance/personal_fin/scripts/marketsdata/nsecm_20201222_bhavcopy.csv'
-DELIMITER ','
-CSV HEADER;

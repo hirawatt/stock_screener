@@ -3,7 +3,6 @@ import psycopg2.extensions
 import psycopg2.extras
 from io import StringIO
 from io import BytesIO
-import gzip
 import datetime
 from config import config
 
@@ -24,7 +23,7 @@ class database(object):
 
     def __init__(self, config, pool_name='dbpool'):
         self.config = config
-        self._pool_name = pool_name
+        self.pool_name = pool_name
 
     def execute_query(self, query, params=None):
 

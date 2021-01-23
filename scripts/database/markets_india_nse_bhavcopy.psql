@@ -15,4 +15,4 @@ CREATE TABLE markets_india_nse_bhavcopy(
   PRIMARY KEY (isin)
 ) ;
 
-CREATE INDEX isin_instrument_index ON markets_india_nse_bhavcopy (isin);
+CREATE INDEX isin_instrument_index ON markets_india_nse_bhavcopy(isin);

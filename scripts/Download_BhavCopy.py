@@ -4,6 +4,7 @@ import zipfile
 from dateutil.parser import parse
 from datetime import datetime
 from io import BytesIO
+import csv
 
 def download_nsecm_bhavcopy(bcdate):
     year = bcdate.year
@@ -28,7 +29,7 @@ def download_nsecm_bhavcopy(bcdate):
             bcdate.strftime('%Y%m%d'))
         with open(filename, 'wb') as f:
             f.write(data)
-    return True
+    return filename
 
 # Date Parser Function
 def GetParser():
