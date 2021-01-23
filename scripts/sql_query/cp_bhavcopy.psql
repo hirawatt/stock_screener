@@ -1,0 +1,4 @@
+COPY markets_india_stock_price
+FROM '%s'
+DELIMITER ','
+CSV HEADER;

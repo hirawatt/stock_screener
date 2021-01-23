@@ -1,0 +1,18 @@
+CREATE TABLE markets_india_nse_bhavcopy(
+  symbol char(10) DEFAULT NULL,
+  series char(3) DEFAULT NUll,
+  open double precision DEFAULT NULL,
+  high double precision DEFAULT NULL,
+  low double precision DEFAULT NULL,
+  close double precision DEFAULT NULL,
+  last_price double precision DEFAULT NULL,
+  previous_close double precision DEFAULT NULL,
+  traded_volume int DEFAULT NUll,
+  traded_value double precision DEFAULT NULL,
+  trade_date date DEFAULT NULL,
+  no_of_trades int DEFAULT NULL,
+  isin char(12) DEFAULT NULL,
+  PRIMARY KEY (isin)
+) ;
+
+CREATE INDEX isin_instrument_index ON markets_india_nse_bhavcopy (isin);

@@ -1,0 +1,15 @@
+CREATE TABLE markets_india_stock_prices(
+  instrument_id int NOT NULL,
+  trade_date date DEFAULT NULL,
+  open double precision DEFAULT NULL,
+  high double precision DEFAULT NULL,
+  low double precision DEFAULT NULL,
+  close double precision DEFAULT NULL,
+  last_price double precision DEFAULT NULL,
+  traded_volume int DEFAULT NULL,
+  traded_value double precision DEFAULT NULL,
+  UNIQUE(instrument_id, trade_date)
+) ;
+
+CREATE INDEX instrument_based_index on markets_india_stock_prices(instrument_id);
+CREATE INDEX date_based_index on markets_india_stock_prices(trade_date);

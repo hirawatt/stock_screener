@@ -3,3 +3,4 @@ streamlit
 requests
 psycopg2
 datetime
+matplotlib

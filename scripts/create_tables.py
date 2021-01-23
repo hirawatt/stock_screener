@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import psycopg2
 from config import config
+import os
 
 def create_tables():
     conn = None
@@ -27,7 +28,6 @@ def executeScriptsFromFile(filename):
     fd = open(filename, 'r')
     sqlFile = fd.read()
     fd.close()
-    #fl = open(marketdata/nsecm_20201222_bhavcopy.csv, 'markets_india_stock_symbols', )
     # all SQl commands (split on ';')
     sqlCommands = sqlFile.split(';')
 
@@ -51,7 +51,9 @@ def executeScriptsFromFile(filename):
                 conn.close()
                 print('Database connection closed.')
 
-
 if __name__ == '__main__':
+    pwd = os.getcwd()
     create_tables()
-    executeScriptsFromFile("markets_india_calculated_ratios.psql")
+    sql_query = ["/database/markets_india_nse_bhavcopy.psql","/database/markets_india_stock_price.psql", "/database/markets_india_stock_symbols.psql", "/database/markets_india_balance_sheet.psql", "/database/markets_india_calculated_ratios.psql", "/database/markets_india_pnl.psql"]
+    for sq in sql_query:
+        executeScriptsFromFile(pwd + sq)

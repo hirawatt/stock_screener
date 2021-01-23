@@ -1,0 +1,13 @@
+CREATE TABLE markets_india_calculated_ratios (
+  instrument_id int DEFAULT NULL,
+  roe double precision DEFAULT NULL,
+  roa double precision DEFAULT NULL,
+  cmp double precision DEFAULT NULL,
+  price_to_book double precision DEFAULT NULL,
+  price_to_earnings double precision DEFAULT NULL,
+  price_to_sales double precision DEFAULT NULL,
+  market_cap double precision DEFAULT NULL,
+  net_margin double precision DEFAULT NULL,
+  profit_growth double precision DEFAULT NULL,
+  revenue_growth double precision DEFAULT NULL
+) ;
