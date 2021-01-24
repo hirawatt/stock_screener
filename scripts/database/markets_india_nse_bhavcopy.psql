@@ -1,6 +1,6 @@
 CREATE TABLE markets_india_nse_bhavcopy(
   symbol char(10) DEFAULT NULL,
-  series char(3) DEFAULT NUll,
+  series char(10) DEFAULT NUll,
   open double precision DEFAULT NULL,
   high double precision DEFAULT NULL,
   low double precision DEFAULT NULL,
@@ -12,6 +12,7 @@ CREATE TABLE markets_india_nse_bhavcopy(
   trade_date date DEFAULT NULL,
   no_of_trades int DEFAULT NULL,
   isin char(12) DEFAULT NULL,
+  extra char(20) DEFAULT NULL,
   PRIMARY KEY (isin)
 ) ;
 

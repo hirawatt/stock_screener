@@ -9,7 +9,7 @@ import psycopg2
 
 if __name__ == '__main__':
 
-    bhavcopyfile = download_nsecm_bhavcopy(datetime(2021, 1, 21))
+    bhavcopyfile = download_nsecm_bhavcopy(datetime(2021, 1, 18))
     print("File saved at " + bhavcopyfile)
     pwd = os.getcwd()
     create_tables()
@@ -22,8 +22,9 @@ if __name__ == '__main__':
     params = config()
     conn = psycopg2.connect(**params)
     cur = conn.cursor()
+    next(f)
     cur.copy_from(f, 'markets_india_nse_bhavcopy', sep=',')
-    cur.commit()
+    conn.commit()
     f.close()
     '''
         query = "/sql_query/cp_bhavcopy.psql"
