@@ -9,11 +9,11 @@ import os
 import pandas as pd
 
 def download_nsecm_bhavcopy(bcdate):
-
+    # set date, month, year variables
     year = bcdate.year
     mnth = bcdate.strftime('%b').upper()
     dt = bcdate.strftime('%d')
-
+    # download file
     base_path = "https://archives.nseindia.com/content/historical/EQUITIES/{}/{}/cm{}{}{}bhav.csv.zip"
     path = base_path.format(year, mnth, dt, mnth, year)
     response = requests.get(path)
@@ -25,7 +25,7 @@ def download_nsecm_bhavcopy(bcdate):
     filelist = nsezip.namelist()
     if len(filelist) > 1:
         raise ValueError("Something is wrong. More than one file found. Quitting.")
-    filename = "marketsdata/nsecm.{}.bhavcopy.csv".format(
+    filename = "marketsdata/nsecm_{}_bhavcopy.csv".format(
             bcdate.strftime('%Y%m%d'))
     with nsezip.open(filelist[0], 'r') as csvfile:
         data = pd.read_csv(csvfile)
