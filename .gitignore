@@ -1,2 +1,7 @@
+# credentials
 database.ini
 .env
+
+# downloaded data
+scripts/marketsdata/
+scripts/__pycache__/

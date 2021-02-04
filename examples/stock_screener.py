@@ -10,7 +10,7 @@ st.write("""
 """)
 
 # define the ticker tickerSymbol
-tickerSymbol = 'GOOGL'
+tickerSymbol = 'NOK'
 # get data on this ticker
 tickerData = yf.Ticker(tickerSymbol)
 # get the historical prices for this ticker

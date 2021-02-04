@@ -6,8 +6,10 @@ from dbutil import database
 import datalayer
 # external libraries
 from datetime import datetime
+from IPython.display import display
 import os
 import psycopg2
+import records
 
 if __name__ == '__main__':
     # download bhavcopy
@@ -33,4 +35,10 @@ if __name__ == '__main__':
     '''
         query = "/sql_query/cp_bhavcopy.psql"
         executeScriptsFromFile(pwd + query)
+    '''
+    # Alternate implementation of database import
+    '''
+    db = records.Database('postgres://...')
+    rows = db.query('select * from markets_india_nse_bhavcopy')
+    rows = db.query_file('sql_query/cp_bhavcopy.psql')
     '''

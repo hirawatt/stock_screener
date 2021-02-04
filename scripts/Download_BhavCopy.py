@@ -35,7 +35,6 @@ def download_nsecm_bhavcopy(bcdate):
     return filename
 
 '''
-
     with zipfile.ZipFile(io.BytesIO(response), 'r') as nseunzip:
         nseunzip.extractall("/home/vh/Desktop/finance/personal_fin/scripts/marketsdata/")
     os.rename(r"/home/vh/Desktop/finance/personal_fin/scripts/marketsdata/cm{}{}{}bhav.csv".format(dt, mnth, year), r"/home/vh/Desktop/finance/personal_fin/scripts/marketsdata/nsecm_{}_bhavcopy.csv".format(
