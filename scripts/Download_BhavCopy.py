@@ -1,11 +1,11 @@
 #!/usr/bin/python3.8
 import requests
 import zipfile
-from dateutil.parser import parse
+
 from datetime import datetime
-import io
-import csv
-import os
+from dateutil.parser import parse
+
+import io, os, csv
 import pandas as pd
 
 def download_nsecm_bhavcopy(bcdate):
@@ -20,13 +20,13 @@ def download_nsecm_bhavcopy(bcdate):
     if response.status_code == 200:
         response = response.content
     else:
-        raise ValueError("Error Downloadning BhavCopy")
+        raise ValueError("Error Downloading BhavCopy")
+
     nsezip = zipfile.ZipFile(io.BytesIO(response), 'r')
     filelist = nsezip.namelist()
     if len(filelist) > 1:
         raise ValueError("Something is wrong. More than one file found. Quitting.")
-    filename = "marketsdata/nsecm_{}_bhavcopy.csv".format(
-            bcdate.strftime('%Y%m%d'))
+    filename = "marketsdata/nsecm_{}_bhavcopy.csv".format(bcdate.strftime('%Y%m%d'))
     with nsezip.open(filelist[0], 'r') as csvfile:
         data = pd.read_csv(csvfile)
         csv_data = pd.DataFrame.to_csv(data, encoding='utf-8', index=False)
@@ -53,9 +53,12 @@ def GetParser():
     parser.add_argument('date')
     return parser
 
-if __name__ == '__main__':
+def main():
     args = GetParser().parse_args()
     date = datetime.strptime(args.date, '%Y%m%d')
     print("Downloadning BhavCopy dated...", date)
     download_nsecm_bhavcopy(date)
     print("BhavCopy downloaded and saved in csv format")
+
+if __name__ == '__main__':
+    main()

@@ -40,9 +40,9 @@ bc_file = pwd + bhavcopyfile
 print(pwd)
 
 #sp_500_sectors = [IT, Materials, Utilities, Communication Services, Financial, Healthcare, Industrials, Energy, Consumer Staples, Consumer Discretionary]
-#chart_data = [Symbol, Company Age, Sector, ]
+#chart_data = [Symbol, Company Age, Sector]
 
-def stock_data(nrows):
+def load_data(nrows):
     data = pd.read_csv(bc_file, nrows=nrows)
     return data
 
