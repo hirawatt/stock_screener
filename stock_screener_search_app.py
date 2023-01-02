@@ -8,8 +8,7 @@ import os
 st.title('Simple Stock Price App')
 
 # Selection box
-tickerSymbol = st.selectbox("Stock: ",
-                     ['GOOGL', 'AAPL', 'AMZN'])
+tickerSymbol = st.selectbox("Stock: ", ['GOOGL', 'AAPL', 'AMZN'])
 
 # get data on this ticker
 tickerData = yf.Ticker(tickerSymbol)
